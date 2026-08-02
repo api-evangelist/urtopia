@@ -1,0 +1,41 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: https://newurtopia.com/llms.txt
+notes: >-
+  Urtopia's storefront runs on Shopify, which serves two live agent-facing MCP
+  surfaces natively on the newurtopia.com host: the Storefront MCP server at
+  /api/mcp (probed 2026-07-21, tools/list returned 200 with the five tools
+  below) and the Universal Commerce Protocol (UCP) shopping MCP endpoint at
+  /api/ucp/mcp documented in the store's llms.txt and /.well-known/ucp merchant
+  profile. Checkout requires explicit buyer approval per the store's published
+  agent rules.
+server:
+  name: urtopia-storefront
+  transport: http
+  url: https://newurtopia.com/api/mcp
+  ucp_endpoint: https://newurtopia.com/api/ucp/mcp
+  discovery: https://newurtopia.com/.well-known/ucp
+  platform: shopify
+tools:
+  - name: search_catalog
+    description: >-
+      Search for products from the online store, hosted on Shopify. Supports
+      natural language queries and filter criteria; paginated results conform
+      to the UCP catalog search capability (dev.ucp.shopping.catalog.search).
+  - name: get_cart
+    description: >-
+      Get the cart including items, shipping options, discount info, and
+      checkout url for a given cart id.
+  - name: update_cart
+    description: >-
+      Perform updates to a cart, including adding/removing/updating line
+      items, buyer information, shipping details, discount codes, and gift
+      cards.
+  - name: search_shop_policies_and_faqs
+    description: >-
+      Used to get facts about the store's policies, products, or services.
+  - name: get_product_details
+    description: >-
+      Look up a product by ID. Pass the 'options' parameter to select a
+      specific variant for the product card.

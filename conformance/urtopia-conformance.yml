@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://newurtopia.com/.well-known/ucp
+standards:
+  - id: oidc
+    conforms: true
+    evidence: >-
+      /.well-known/openid-configuration returns 200 on newurtopia.com (Shopify
+      Customer Account OIDC discovery, RS256, PKCE S256).
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      /.well-known/oauth-authorization-server (RFC 8414) returns 200 with
+      authorization_code + refresh_token grants.
+  - id: ucp
+    conforms: true
+    evidence: >-
+      /.well-known/ucp returns the store's Universal Commerce Protocol merchant
+      profile (versions 2026-04-08 and 2026-01-23) with shopping, checkout,
+      fulfillment, discount, cart, order, and catalog capabilities.
+  - id: mcp
+    conforms: true
+    evidence: >-
+      Live MCP endpoint at /api/mcp answered JSON-RPC tools/list with five
+      storefront tools (probed 2026-07-21); UCP shopping MCP at /api/ucp/mcp.
+  - id: llms-txt
+    conforms: true
+    evidence: /llms.txt returns 200 with agent instructions (mirrors /agents.md).
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 404.

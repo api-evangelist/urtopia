@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: searched
+source: https://newurtopia.com/.well-known/openid-configuration
+notes: >-
+  Urtopia publishes no proprietary developer API. The authentication surface
+  on newurtopia.com is Shopify Customer Account OIDC (served natively via
+  /.well-known/openid-configuration and /.well-known/oauth-authorization-server
+  on the store host). The storefront agent surfaces (Storefront MCP,
+  UCP read-only catalog endpoints) are unauthenticated for read-only browsing;
+  checkout requires buyer-approved payment per the store's llms.txt rules.
+summary:
+  types: [oauth2, openIdConnect]
+  oauth2_flows: [authorizationCode]
+  pkce: S256
+  anonymous_read: true
+schemes:
+  - name: ShopifyCustomerAccountOIDC
+    type: openIdConnect
+    openIdConnectUrl: https://newurtopia.com/.well-known/openid-configuration
+    issuer: https://shopify.com/authentication/58358104213
+    authorizationUrl: https://shopify.com/authentication/58358104213/oauth/authorize
+    tokenUrl: https://shopify.com/authentication/58358104213/oauth/token
+    grant_types: [authorization_code, refresh_token, 'urn:ietf:params:oauth:grant-type:jwt-bearer']
+    code_challenge_methods: [S256]
+    scopes: [openid, email, 'customer-account-api:full', 'customer-account-mcp-api:full']
+    sources: [well-known/urtopia-openid-configuration.json]
+  - name: AnonymousStorefrontRead
+    type: none
+    description: >-
+      Read-only product/collection JSON endpoints and the Storefront MCP
+      tools/list surface require no authentication.
+    sources: [llms/urtopia-llms.txt]

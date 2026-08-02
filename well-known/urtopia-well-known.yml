@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+host: https://newurtopia.com
+notes: >-
+  Urtopia's storefront runs on Shopify; the OIDC / OAuth authorization-server
+  documents are Shopify Customer Account authentication served natively on the
+  newurtopia.com host, and /.well-known/ucp is the store's Universal Commerce
+  Protocol (UCP) merchant profile for agent-driven commerce.
+documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: urtopia-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: urtopia-oauth-authorization-server.json
+  - path: /.well-known/ucp
+    status: 200
+    file: urtopia-ucp.json
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /llms.txt
+    status: 200
+    file: ../llms/urtopia-llms.txt

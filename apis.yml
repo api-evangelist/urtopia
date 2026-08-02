@@ -1,8 +1,28 @@
 aid: urtopia
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/urtopia.png
 name: Urtopia
-description: 'Urtopia is a company surfaced as a portfolio company of dcm-ventures and added to the API
-  Evangelist network as a stub for enrichment. Sector: consumer. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Urtopia designs and sells smart carbon-fiber electric bikes, pairing
+  lightweight frames and premium components with a connected riding experience
+  through the companion Urtopia App. The company is backed by DCM Ventures and
+  sells direct through its Shopify-powered storefront at newurtopia.com (with
+  regional stores for Europe and Australia and a B2B dealer portal), where the
+  store exposes an agent-ready commerce surface: a published llms.txt with
+  agent instructions, a Universal Commerce Protocol (UCP) merchant profile at
+  /.well-known/ucp, and live MCP endpoints for catalog search, cart, and
+  buyer-approved checkout.
 url: https://raw.githubusercontent.com/api-evangelist/urtopia/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,16 +32,66 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Consumer
-apis: []
+- E-Bikes
+- Electric Vehicles
+- Cycling
+- Smart Hardware
+- Mobility
+- eCommerce
+apis:
+- name: Urtopia Storefront Agent Commerce (UCP / MCP)
+  description: >-
+    Agent-driven commerce surface served natively on the Shopify-powered
+    Urtopia storefront: UCP discovery at /.well-known/ucp, MCP tools for
+    catalog search, product details, cart management, policies/FAQ lookup,
+    and buyer-approved checkout, plus unauthenticated read-only product and
+    collection JSON endpoints.
+  humanURL: https://newurtopia.com/llms.txt
+  baseURL: https://newurtopia.com/api/ucp/mcp
+  tags:
+  - Commerce
+  - Agents
+  - MCP
+  - UCP
+  properties:
+  - type: Documentation
+    url: https://newurtopia.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/urtopia-domain-security.yml
 - type: Website
   url: https://newurtopia.com/
+- type: Support
+  url: https://newurtopia.com/pages/contactus
+- type: Blog
+  url: https://newurtopia.com/blogs/blog
+- type: PrivacyPolicy
+  url: https://newurtopia.com/policies/privacy-policy
+- type: TermsOfService
+  url: https://newurtopia.com/policies/terms-of-service
+- type: MCPServer
+  url: mcp/urtopia-mcp.yml
+- type: LLMsTxt
+  url: llms/urtopia-llms.txt
+- type: WellKnown
+  url: well-known/urtopia-well-known.yml
+- type: Authentication
+  url: authentication/urtopia-authentication.yml
+- type: OAuthScopes
+  url: scopes/urtopia-scopes.yml
+- type: Conformance
+  url: conformance/urtopia-conformance.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 10
+  pass: local-v1
