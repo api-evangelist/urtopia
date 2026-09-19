@@ -76,6 +76,11 @@ apis:
   - Commerce
   - Agents
   - MCP
+  - Universal Commerce Protocol
+  tags_raw:
+  - Commerce
+  - Agents
+  - MCP
   - UCP
   properties:
   - type: Documentation
