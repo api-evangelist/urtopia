@@ -1,12 +1,12 @@
 generated: '2026-07-21'
 method: searched
 host: https://newurtopia.com
-notes: >-
-  Urtopia's storefront runs on Shopify; the OIDC / OAuth authorization-server
-  documents are Shopify Customer Account authentication served natively on the
-  newurtopia.com host, and /.well-known/ucp is the store's Universal Commerce
-  Protocol (UCP) merchant profile for agent-driven commerce.
-documents:
+notes: Urtopia's storefront runs on Shopify; the OIDC / OAuth authorization-server documents are Shopify
+  Customer Account authentication served natively on the newurtopia.com host, and /.well-known/ucp is
+  the store's Universal Commerce Protocol (UCP) merchant profile for agent-driven commerce.
+hosts:
+- host: https://newurtopia.com
+  documents:
   - path: /.well-known/security.txt
     status: 404
   - path: /.well-known/openid-configuration
@@ -22,6 +22,8 @@ documents:
     status: 404
   - path: /.well-known/ai-plugin.json
     status: 404
-  - path: /llms.txt
-    status: 200
-    file: ../llms/urtopia-llms.txt
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads. A served
+    .well-known surface recorded in any other shape scores as absent.
